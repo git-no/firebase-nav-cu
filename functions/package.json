@@ -12,18 +12,21 @@
   "main": "lib/index.js",
   "dependencies": {
     "apollo-server": "^2.1.0",
+    "apollo-server-cloud-functions": "^2.1.0",
     "apollo-server-express": "^2.1.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "firebase-admin": "^6.0.0",
     "firebase-functions": "^2.0.5",
     "graphql": "^14.0.2",
+    "graphql-import": "^0.7.1",
     "graphql-tag": "^2.10.0",
     "graphql-tools": "^4.0.0"
   },
   "devDependencies": {
     "@types/graphql": "^14.0.2",
     "tslint": "^5.8.0",
+    "tslint-config-prettier": "^1.15.0",
     "typescript": "^3.1.2"
   },
   "engines": {

@@ -1,4 +1,5 @@
 /functions/node_modules
 /functions/lib
+package-lock.json
 .env
 

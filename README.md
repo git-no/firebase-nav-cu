@@ -66,3 +66,11 @@ anstelle import
   }
 }
 ```
+
+
+yarn i -D tslint-config-prettier
+
+BEispiel
+https://github.com/MyiWorlds/backend/tree/master/src/services/firebase
+
+
