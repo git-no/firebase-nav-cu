@@ -25,7 +25,7 @@ npm install firebase-functions@latest firebase-admin@latest --save
 ## Test functions locally
 
 ```
-npm run-script build
+yarn build
 firebase serve --only functions
 ```
 
@@ -74,3 +74,10 @@ BEispiel
 https://github.com/MyiWorlds/backend/tree/master/src/services/firebase
 
 
+---
+
+Original ts.config setting changed now
+    "noImplicitReturns": false,
+    "outDir": "lib",
+    "sourceMap": true,
+    "strict": false,

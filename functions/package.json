@@ -3,7 +3,7 @@
   "scripts": {
     "lint": "tslint --project tsconfig.json",
     "build": "tsc",
-    "serve": "npm run build && firebase serve --only functions",
+    "serve": "yarn run build && firebase serve --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
@@ -21,7 +21,7 @@
     "graphql": "^14.0.2",
     "graphql-import": "^0.7.1",
     "graphql-tag": "^2.10.0",
-    "graphql-tools": "^4.0.0"
+    "graphql-tools": "^4.0.1"
   },
   "devDependencies": {
     "@types/graphql": "^14.0.2",
