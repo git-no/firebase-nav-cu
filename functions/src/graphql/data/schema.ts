@@ -1,21 +1,26 @@
-import { gql, makeExecutableSchema } from 'apollo-server-express'
-import resolvers from './resolvers'
+import { gql, makeExecutableSchema } from "apollo-server-express";
+import resolvers from "./resolvers";
+// import { books } from "./data";
 
-const typeDefs = gql` 
-# This "Book" type can be used in other type declarations.
-type Book {
-   title: String
-   author: String
-}
+const typeDefs = gql`
+  type Query {
+    books: [Book]
+    book(id: ID): Book
+  }
 
-# The "Query" type is the root of all GraphQL queries.
-# (A "Mutation" type will be covered later on.)
-type Query {
-   books: [Book]
-}
-`
+  # This "Book" type can be used in other type declarations.
+  type Book {
+    id: ID
+    title: String
+    author: String
+  }
+`;
 
 export default makeExecutableSchema({
-   typeDefs: typeDefs,
-   resolvers
-})
+  typeDefs,
+  resolvers
+});
+
+// function getBooks() {
+//   return [Book];
+// }

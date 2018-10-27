@@ -1,30 +1,17 @@
-// import { Express } from 'express'
-const express = require('express');
-import { ApolloServer } from 'apollo-server-express'
-import schema from './data/schema'
-// const { typeDefs, resolvers} = require('./schema')
-// import { startServer } from './api/graphql/server'
+const express = require("express");
+import { ApolloServer } from "apollo-server-express";
+import schema from "./data/schema";
+import * as functions from "firebase-functions";
 
-import * as functions from 'firebase-functions'
-import * as admin from 'firebase-admin'
+export const setupGraphQLServer = () => {
+  const app = express();
+  const path = "/";
 
-admin.initializeApp()
-const settings = { timestampsInSnapshots: true }
-const firestore = admin.firestore()
-firestore.settings(settings);
+  const graphQLServer = new ApolloServer({ schema });
+  graphQLServer.applyMiddleware({ app, path });
 
-const setupGraphQLServer = () => {
+  return app;
+};
 
-   const app = express()
-   const path = '/'
-
-   const graphQLServer = new ApolloServer({ schema: schema  });
-   graphQLServer.applyMiddleware({ app, path: path })
-
-   return app
-}
-
-export const graphServer = setupGraphQLServer()
-export const api = functions.https.onRequest(graphServer)
-// const graphServer = setupGraphQLServer()
-// export const myhook = functions.https.onRequest(graphServer)
+const graphServer = setupGraphQLServer();
+export const api = functions.https.onRequest(graphServer);
