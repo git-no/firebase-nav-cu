@@ -1,13 +1,13 @@
 // interface Version {
-//    id: String
-//    title: String
-//    supportLink: String
-// }
-
-// interface Book {
 //   id: String;
 //   title: String;
-//   author: String;
+//   supportLink: String;
 // }
 
-// export default Book;
+interface Version {
+  id: String;
+  title: String;
+  supportLink: String;
+}
+
+export default Version;

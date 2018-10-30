@@ -4,23 +4,36 @@ import resolvers from "./resolvers";
 
 const typeDefs = gql`
   type Query {
-    books: [Book]
-    book(id: ID): Book
+    versions: [Version]
+    version(id: ID): Version
+    # updateByCU:(version: ID, update: ID)
   }
 
   # This "Book" type can be used in other type declarations.
-  type Book {
+  type Version {
     id: ID
     title: String
-    author: String
+    link: String
+    updates(id: String): [Update]
   }
+
+  type Update {
+    id: ID
+    title: String
+    build: String
+    link: String
+    version: Version!
+    # locations: [Location]
+  }
+
+  # type Location {
+  #   id: ID
+  #   downloadLink: String
+  #   update: Update
+  # }
 `;
 
 export default makeExecutableSchema({
   typeDefs,
   resolvers
 });
-
-// function getBooks() {
-//   return [Book];
-// }

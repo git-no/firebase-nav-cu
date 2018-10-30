@@ -2,21 +2,32 @@
 // import Version from './interface'
 // import { firestore } from '../server'
 // import Book from "./interface";
-import { books } from "./data";
+import * as data from "./data";
 
 const resolvers = {
   Query: {
-    books: () => books,
-    book: (_: any, args: any) => {
-      return getBookByID(args.id);
+    versions: () => data.data.Versions,
+    version: (_: any, args: any) => {
+      return data.findVersionOfID(args.id);
     }
+    // updates: () => {
+    //   return data.data.Updates;
+    // }
+  },
+
+  Version: {
+    updates(parent: any, args: any) {
+      return data.findUpdatesOfVersion(parent.id, args.id);
+    }
+    // locations(parent: any, args: any) {
+    //   return data.findLocationOfUpdate(parent.id, args.id);
+    // }
   }
+  // Updates: {
+  //   locations(parent: any, args: any) {
+  //     return data.findLocationOfUpdate(parent.id, args.id);
+  //   }
+  // }
 };
-
-function getBookByID(id: String) {
-  console.log(books.find(book => book.id == id));
-
-  return books.find(book => book.id == id);
-}
 
 export default resolvers;
