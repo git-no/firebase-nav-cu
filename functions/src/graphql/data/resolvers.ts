@@ -1,7 +1,6 @@
 // import { ApolloError, ValidationError } from 'apollo-server'
 // import Version from './interface'
 // import { firestore } from '../server'
-// import Book from "./interface";
 import * as data from "./data";
 
 const resolvers = {
@@ -10,24 +9,18 @@ const resolvers = {
     version: (_: any, args: any) => {
       return data.findVersionOfID(args.id);
     }
-    // updates: () => {
-    //   return data.data.Updates;
-    // }
   },
 
   Version: {
     updates(parent: any, args: any) {
-      return data.findUpdatesOfVersion(parent.id, args.id);
+      return data.findUpdateOfVersion(parent.id, args.id);
     }
-    // locations(parent: any, args: any) {
-    //   return data.findLocationOfUpdate(parent.id, args.id);
-    // }
+  },
+  Update: {
+    localization(parent: any, args: any) {
+      return data.findLocalizationOfUpdate(parent.id, args.id);
+    }
   }
-  // Updates: {
-  //   locations(parent: any, args: any) {
-  //     return data.findLocationOfUpdate(parent.id, args.id);
-  //   }
-  // }
 };
 
 export default resolvers;

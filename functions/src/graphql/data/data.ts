@@ -1,5 +1,3 @@
-import { isNull } from "util";
-
 export const data = {
   Versions: [
     {
@@ -11,47 +9,58 @@ export const data = {
       id: "11",
       title: "MS Dynamics NAV 2018",
       link: "http://link"
+    },
+    {
+      id: "11",
+      title: "MS Dynamics NAV 2018",
+      link: "http://link"
     }
   ],
   Updates: [
     {
       id: "1",
-      version: "10",
-      build: "1010",
+      buildNo: "1010",
+      kbNo: "1",
+      link: "http://link",
+      releaseDate: "Feb 2018",
       title: "NAV 10 Cumulative Update 1",
-      link: "http://link"
+      version: "10"
     },
     {
       id: "2",
-      version: "10",
-      build: "1010",
+      buildNo: "1010",
+      kbNo: "1",
+      link: "http://link",
+      releaseDate: "Feb 2018",
       title: "NAV 10 Cumulative Update 2",
-      link: "http://link"
+      version: "10"
     },
     {
       id: "3",
-      version: "11",
-      build: "1111",
+      buildNo: "1111",
+      kbNo: "1",
+      link: "http://link",
+      releaseDate: "Feb 2018",
       title: "NAV 11 Cumulative Update 1",
-      link: "http://link"
+      version: "11"
     }
   ],
 
-  Locations: [
+  Localizations: [
     {
       id: "DE",
-      update: "1",
-      downloadLink: "http://blabla"
+      downloadLink: "http://blabla",
+      update: "1"
     },
     {
       id: "EN",
-      update: "1",
-      downloadLink: "http://blabla"
+      downloadLink: "http://blabla",
+      update: "1"
     },
     {
       id: "EN",
-      update: "2",
-      downloadLink: "http://blabla"
+      downloadLink: "http://blabla",
+      update: "2"
     }
   ]
 };
@@ -62,26 +71,24 @@ export function findVersions() {
 }
 
 export function findVersionOfID(id: String) {
-  return data.Versions.find(version => version.id == id);
+  return id == null
+    ? data.Versions
+    : data.Versions.find(version => version.id == id);
 }
 
-// Cumulated Updates
-export function findUpdatesOfVersion(parentID: String, id: String) {
-  if (id === undefined || isNull(id)) {
-    return data.Updates.filter(update => update.version == parentID);
-  } else {
-    return data.Updates.filter(
-      update => update.version == parentID && update.id == id
-    );
-  }
+// // Cumulated Updates
+export function findUpdateOfVersion(parentID: String, id: String) {
+  return id == null
+    ? data.Updates.filter(update => update.version == parentID)
+    : data.Updates.filter(
+        update => update.version == parentID && update.id == id
+      );
 }
 
-export function findLocationOfUpdate(parentID: String, id: String) {
-  if (id === undefined || isNull(id)) {
-    return data.Locations.filter(location => location.update == parentID);
-  } else {
-    return data.Locations.filter(
-      location => location.update == parentID && location.id == id
-    );
-  }
+export function findLocalizationOfUpdate(parentID: String, id: String) {
+  return id == null
+    ? data.Localizations.filter(localization => localization.update == parentID)
+    : data.Localizations.filter(
+        localization => localization.update == parentID && localization.id == id
+      );
 }
